@@ -1,0 +1,34 @@
+{% extends 'BaseLayout.html' %}
+
+{% block content %}
+
+<h1>List Of Videos</h1>
+
+
+<style>
+    .tb { border-collapse: collapse; }
+    .tb th, .tb td { padding: 2px; border: solid 1px #777; }
+</style>
+
+<table class="tb">
+    <tr>
+        <th>Title</th>
+        <th>Url</th>
+        <th>Video Size</th>
+        <th>Video Length</th>
+        <th>Created Date</th>
+    </tr>
+
+    {% for i in list_videos %}
+    <tr>
+        <td style="width: 250px">{{i.name}}</td>
+        <td style="width: 500px"><a href="http://127.0.0.1:8000/media/{{i.video}}" target="_blank">http://127.0.0.1:8000/media/{{i.video}}</a></td>
+        <td style="padding-left: 30px; padding-right: 30px">{{i.video_size}}</td>
+        <td style="padding-left: 30px; padding-right: 30px">{{i.video_length}}</td>
+        <td style="padding-left: 30px; padding-right: 30px">{{i.created_date}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+
+{% endblock %}

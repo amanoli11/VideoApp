@@ -1,0 +1,78 @@
+{% extends 'BaseLayout.html' %}
+
+{% block content %}
+
+<h1>Upload Videos</h1>
+
+
+<form enctype="multipart/form-data" method="POST" action="">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <br />
+
+    {% if type == 'update' %}
+    <input type="submit" value="Update" />
+    {% else %}
+    <input type="submit" />
+    {% endif %}
+
+
+    <!-- <input type="submit" value="Upload And Reset" /> -->
+
+
+
+</form>
+
+{% if error == True %}
+<strong style="color: red">{{errormsg}}</strong>
+{% endif %}
+
+<br />
+<br />
+
+{% load static %}
+<h2>Last Uploaded</h2>
+<video src= '{% get_media_prefix %}{{context.lastvideo.video}}' width="600px" height="300px" preload loop controls autoplay></video>
+<br />
+Video Name = {{context.lastvideo.name}}
+<br />
+<br />
+
+
+<!-- <table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Video Size</th>
+            <th>Video Length</th>
+            <th>Created Date</th>
+            {% if type == 'save' %}
+            <th>Actions</th>
+            {% endif %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for i in list_videos %}
+        <tr>
+            <td style="width: 250px">{{i.name}}</td>
+            <td style="width: 500px"><a href="http://127.0.0.1:8000/media/{{i.video}}"
+                    target="_blank">http://127.0.0.1:8000/media/{{i.video}}</a></td>
+            <td style="padding-left: 30px; padding-right: 30px">{{i.video_size_in_mb}}</td>
+            <td style="padding-left: 30px; padding-right: 30px">{{i.video_length}}</td>
+            <td style="padding-left: 30px; padding-right: 30px">{{i.created_date}}</td>
+            {% if type == 'save' %}
+            <td><a href="video/update/{{i.id}}/">Edit</a> <a href="video/delete/{{i.id}}/">Delete</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+
+</table> -->
+
+{% endblock %}

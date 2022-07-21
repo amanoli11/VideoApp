@@ -1,0 +1,35 @@
+{% extends 'BaseLayout.html' %}
+
+{% block content %}
+
+<h1>Get Price</h1>
+
+<br />
+
+<form enctype="multipart/form-data" method="POST" action="">
+    {% for field in form %}
+    <div class="row">
+        <div class="col-md-2">
+            {{ field.label_tag }}
+        </div>
+        <div class="col-md-10 pull-left">
+            {{ field }}
+        </div>
+    </div>
+    {% endfor %}
+    
+    <br />
+    
+    <input type="submit" />
+</form>
+
+<strong style="color: red">
+    {{ errormessage }}
+</strong>
+<br />
+
+<strong>
+    The total price is {{ price }}$
+</strong>
+
+{% endblock %}

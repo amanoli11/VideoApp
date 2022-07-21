@@ -1,0 +1,62 @@
+{% extends 'BaseLayout.html' %}
+
+{% block content %}
+
+<h1>Update Video</h1>
+
+<form enctype="multipart/form-data" method="POST" action="">
+    {% csrf_token %}
+    {{ context.form.as_ul }}
+
+    <br />
+
+    <input type="submit" value="Update" />
+
+    <!-- <input type="submit" value="Upload And Reset" /> -->
+    {% if error == True %}
+    <strong style="color: red">{{errormsg}}
+    {% endif %}
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    
+</form>
+
+
+<p>{{length}}</p>
+
+<style>
+    .tb { border-collapse: collapse; }
+    .tb th, .tb td { padding: 2px; border: solid 1px #777; }
+    /* .tb th { background-color: lightblue; } */
+</style>
+
+{% if length == 1 %}
+
+{% endif %}
+
+<table class="tb">
+    <tr>
+        <th>Title</th>
+        <th>Url</th>
+        <th>Video Size</th>
+        <th>Video Length</th>
+        <th>Created Date</th>
+        <th>Actions</th>
+    </tr>
+
+    <tr>
+        <td style="width: 250px">{{list_videos.name}}</td>
+        <td style="width: 500px"><a href="http://127.0.0.1:8000/media/{{list_videos.video}}" target="_blank">http://127.0.0.1:8000/media/{{list_videos.video}}</a></td>
+        <td style="padding-left: 30px; padding-right: 30px">{{list_videos.video_size}}</td>
+        <td style="padding-left: 30px; padding-right: 30px">{{list_videos.video_length}}</td>
+        <td style="padding-left: 30px; padding-right: 30px">{{list_videos.created_date}}</td>
+        <td><button>Edit</button> <button>Delete</button></td>
+    </tr>
+
+</table>
+
+{% endblock %}

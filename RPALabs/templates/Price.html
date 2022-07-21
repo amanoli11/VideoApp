@@ -1,0 +1,29 @@
+{% extends 'BaseLayout.html' %}
+
+{% block content %}
+
+<h1>Get Prices</h1>
+
+<br />
+
+<form enctype="multipart/form-data" method="POST" action="">
+
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <br />
+
+
+    <input type="submit" />
+
+    <!-- <input type="submit" value="Upload And Reset" /> -->
+
+    <p>The total price is <strong>{{price}}$</strong></p>
+</form>
+
+{% if error == True %}
+<strong style="color: red">{{errormsg}}
+    {% endif %}
+
+
+    {% endblock %}

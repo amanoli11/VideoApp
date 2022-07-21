@@ -1,0 +1,60 @@
+{% extends 'BaseLayout.html' %}
+
+{% block content %}
+
+<h1>List Of Videos</h1>
+
+<br />
+
+<form enctype="multipart/form-data" method="POST" action="">
+    {% for field in context.form %}
+    <div class="row">
+        <div class="col-md-2">
+            {{ field.label_tag }}
+        </div>
+        <div class="col-md-10 pull-left">
+            {{ field }}
+        </div>
+    </div>
+    {% endfor %}
+    
+    <br />
+    
+    <input type="submit" />
+</form>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Title</th>
+            <th>Url</th>
+            <th>Video Size</th>
+            <th>Video Length</th>
+            <th>Created Date</th>
+            {% if type == 'save' %}
+            <th>Actions</th>
+            {% endif %}
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for i in list_videos %}
+        <tr>
+            <td style="width: 250px">{{i.name}}</td>
+            <td style="width: 500px"><a href="http://127.0.0.1:8000/media/{{i.video}}"
+                    target="_blank">http://127.0.0.1:8000/media/{{i.video}}</a></td>
+            <td style="padding-left: 30px; padding-right: 30px">{{i.video_size_in_mb}}</td>
+            <td style="padding-left: 30px; padding-right: 30px">{{i.video_length}}</td>
+            <td style="padding-left: 30px; padding-right: 30px">{{i.created_date}}</td>
+
+            <td><a href="http://127.0.0.1:8000/video/update/{{i.id}}/">Edit</a> <a href="video/delete/{{i.id}}/">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+
+</table>
+
+
+{% endblock %}
