@@ -139,3 +139,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # AUTHENTICATION_BACKENDS = (
 #     ('django.contrib.auth.backends.ModelBackend'),
 # )
+
+# FILE_UPLOAD_HANDLERS  = ["django.core.files.uploadhandler.MemoryFileUploadHandler",
+#  "django.core.files.uploadhandler.TemporaryFileUploadHandler"]

@@ -2,7 +2,11 @@
 
 {% block content %}
 
+{% if type == 'save' %}
 <h1>Upload Videos</h1>
+{% elif type == 'update' %}
+<h1>Update Videos</h1>
+{% endif %}
 
 
 <form enctype="multipart/form-data" method="POST" action="">

@@ -36,3 +36,7 @@ class FilterForm(forms.Form):
     # min_length = forms.IntegerField(required=False)
     # max_length = forms.IntegerField(required=False)
     # format = forms.ComboField()
+
+
+class VideoForPrice(forms.Form):
+    video = forms.FileField()

@@ -22,9 +22,9 @@ def file_length_validation(file):
     # clip = VideoFileClip(request.FILES.get('video'))
             # print(clip.duration)
     
-    file_length = VideoFileClip(file.temporary_file_path())
+    # file_length = VideoFileClip(file.temporary_file_path())
 
-    if file_length.duration < 600:
+    if file < 600:
         return True
     else:
         return "The length of the file should be less than 10 minutes."
